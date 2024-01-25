@@ -1,11 +1,8 @@
-#include <cstdlib> // for rand() and srand()
-#include <ctime> // for time()
 #include <iostream>
 #include <iomanip>//for setw
 using namespace std;
 int main()
 {
-    srand(time(0)); // seed the random number generator
     int sample[30]={200,210,220,230,260,290,300,290,290,260,270,300,310,230,220,210,210,200,190,211,234,254,211,211,211,245,250,290,320,300};
     int sampleLength = 30;
     int min=sample[0],max=sample[0];
