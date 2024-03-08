@@ -3,8 +3,8 @@
 using namespace std;
 int main()
 {
-    int sample[30]={200,210,220,230,260,290,300,290,290,260,270,300,310,230,220,210,210,200,190,211,234,254,211,211,211,245,250,290,320,300};
-    int sampleLength = 30;
+    int sample[19]={174,179,183,198,200,204,200,204,192,195,194,193,196,202,189,185,192,190,189};
+    int sampleLength = 19;
     int min=sample[0],max=sample[0];
     for(int i=0;i<sampleLength;i++)
     {
