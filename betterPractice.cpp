@@ -10,7 +10,7 @@
 #include <cmath>
 #include <limits>
 using namespace std;
-//All the important function
+//All the important functions
 int generateRandomNumber(int min, int max)
 {
     random_device rd;  // Obtain a random number from hardware
