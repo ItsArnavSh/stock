@@ -16,6 +16,8 @@
 #include <limits>
 //include necessary headings
 using namespace std;
+void clearScreen();
+void sleepMilliseconds(int milliseconds);
 string cfm="common";
 string cfpm="passwords";
 //cfm- common file name
@@ -29,7 +31,8 @@ bool aexist(string password)
 //first checking with file with such name exists or not in the common names file list
 ifstream MyReadFile(cfpm+".txt");
 // Use a while loop together with the getline() function to read the file line by line
-while (getline (MyReadFile, myTextp)) {
+while (getline (MyReadFile, myTextp))
+{
 // Output the text from the file
 
 if(myTextp==password)
@@ -120,7 +123,8 @@ int flag1=0;//for condition inside of the while loop
 //first checking with file with such name exists or not in the common names file list
 ifstream MyReadFile(cfm+".txt");
 // Use a while loop together with the getline() function to read the file line by line
-while (getline (MyReadFile, myTextA)) {
+while (getline (MyReadFile, myTextA))
+{
 // Output the text from the file
 
 if(myTextA==name1_comp)
@@ -150,7 +154,8 @@ string myText;
 // Reading from the text file
 ifstream MyReadFile(name1_comp+".txt");
 // Use a while loop together with the getline() function to read the file line by line
-while (getline (MyReadFile, myText)) {
+while (getline (MyReadFile, myText))
+{
 // Output the text from the file
 // we will be checking only the first line
 // since only first line contains password
@@ -211,7 +216,8 @@ int flag=0;//for condition inside of the while loop
 //first checking with file with such name exists or not in the common names file list
 ifstream MyReadFile(cfm+".txt");
 // Use a while loop together with the getline() function to read the file line by line
-while (getline (MyReadFile, myText)) {
+while (getline (MyReadFile, myText))
+{
 // Output the text from the file
 
 if(myText==name1)
@@ -244,7 +250,8 @@ string myText;
 // Read from the text file
 ifstream MyReadFile(name+".txt");
 // Use a while loop together with the getline() function to read the file line by line
-while (getline (MyReadFile, myText)) {
+while (getline (MyReadFile, myText))
+{
 // Output the text from the file
 // we will be checking only the first line
 // since only first line contains password
@@ -311,9 +318,11 @@ void clearScreen()
 string intToTwoDigitString(int num)
 {
     string str = to_string(num);
-    if (str.length() > 2) {
+    if (str.length() > 2)
+{
         str = str.substr(str.length() - 2);  // Get the last two characters
-    } else if (str.length() < 2) {
+    } else if (str.length() < 2)
+{
         str = "0" + str;  // Add a leading zero if the string has only one character
     }
     return str;
@@ -330,7 +339,8 @@ float inputNumber(int min=0,int max=0,int def = 0)
     float input = def;
     try {
         cin >> input;
-        if(cin.fail() || input < min || input > max) {
+        if(cin.fail() || input < min || input > max)
+{
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             throw invalid_argument("Invalid input");
@@ -357,10 +367,12 @@ class graph
 graph(vector<string> x1,vector<int> y1)
 {
     // If the size of the vectors is more than 30, erase the extra elements
-    if (x1.size() > 30) {
+    if (x1.size() > 30)
+{
         x1.erase(x1.begin(), x1.end() - 30);
     }
-    if (y1.size() > 30) {
+    if (y1.size() > 30)
+{
         y1.erase(y1.begin(), y1.end() - 30);
     }
 
@@ -376,10 +388,12 @@ graph(vector<string> x1,vector<int> y1)
 void editGraph(vector<string> x1,vector<int> y1)
 {
     // If the size of the vectors is more than 30, erase the extra elements
-    if (x1.size() > 30) {
+    if (x1.size() > 30)
+{
         x1.erase(x1.begin(), x1.end() - 30);
     }
-    if (y1.size() > 30) {
+    if (y1.size() > 30)
+{
         y1.erase(y1.begin(), y1.end() - 30);
     }
 
@@ -470,18 +484,21 @@ vector<vector<string>> graph::readCSV()
     vector<vector<string>> data;
     ifstream file(fileLocation);
 
-    if (!file.is_open()) {
+    if (!file.is_open())
+{
         cerr << "Could not open file " << fileLocation << endl;
         return data;
     }
 
     string line;
-    while (getline(file, line)) {
+    while (getline(file, line))
+{
         vector<string> row;
         stringstream ss(line);
         string value;
 
-        while (getline(ss, value, ',')) {
+        while (getline(ss, value, ','))
+{
             row.push_back(value);
         }
 
@@ -530,7 +547,16 @@ class fakeCompany
         return ((int)ans);
     }
 };
-class practiceMode
+class Trading
+{
+    public:
+    virtual void start()=0;
+};
+class realTime : public Trading
+{
+
+};
+class practiceMode :public Trading
 {
     vector<fakeCompany> companies;
     vector<int> userWorth;
@@ -941,6 +967,25 @@ else{
 cout<<"Please enter valid choice"<<endl;
 goto start;
 
+}
+clearScreen();
+cout << "Enter 1 to start trading"<<endl;
+cout << "Enter 2 for Practice Mode"<<endl;
+cout << "Enter 3 to go back"<<endl;
+int  choice;
+cin >> choice;
+practiceMode test;
+switch(choice)
+{
+    case 1:
+    break;
+    case 2:
+    clearScreen();
+    test.pointer = &test;
+    test.start();
+    break;
+    case 3:
+    break;
 }
 return 1;
 }
